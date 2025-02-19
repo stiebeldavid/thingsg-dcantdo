@@ -3,8 +3,7 @@ import { useEffect } from "react";
 
 const Shop = () => {
   useEffect(() => {
-    window.open("https://thingsgodcantdo.myshopify.com/", "_blank");
-    window.location.href = "/";
+    window.location.href = "https://thingsgodcantdo.myshopify.com/";
   }, []);
 
   return null;
