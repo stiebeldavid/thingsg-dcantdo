@@ -13,7 +13,7 @@ const Navigation = () => {
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon" className="rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30">
-            <Menu className="h-6 w-6" />
+            <Menu className="h-7 w-7" />
             <span className="sr-only">Toggle menu</span>
           </Button>
         </SheetTrigger>
