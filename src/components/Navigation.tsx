@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Menu, Book } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -8,7 +7,7 @@ const Navigation = () => {
   const [open, setOpen] = useState(false);
 
   const handleBookClick = () => {
-    window.open('https://www.amazon.com/dp/1300448296?tag=yoursite-20', '_blank');
+    window.open('https://www.amazon.com/dp/1300448296?tag=TGCD', '_blank');
     setOpen(false);
   };
 
