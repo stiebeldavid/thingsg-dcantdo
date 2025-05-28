@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Menu, Book, HelpCircle, Mail, Newsletter } from "lucide-react";
+import { Menu, Book, HelpCircle, Mail, FileText } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -65,7 +65,7 @@ const Navigation = () => {
               onClick={handleNewsletterClick}
               className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
             >
-              <Newsletter className="h-5 w-5" />
+              <FileText className="h-5 w-5" />
               Newsletter
             </button>
           </nav>
