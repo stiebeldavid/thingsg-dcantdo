@@ -1,5 +1,6 @@
+
 import React, { useState } from "react";
-import { Menu, Book } from "lucide-react";
+import { Menu, Book, HelpCircle } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -8,6 +9,11 @@ const Navigation = () => {
 
   const handleBookClick = () => {
     window.open('https://www.amazon.com/dp/1300448296?tag=TGCD', '_blank');
+    setOpen(false);
+  };
+
+  const handleFAQClick = () => {
+    window.location.href = '/faq';
     setOpen(false);
   };
 
@@ -28,6 +34,13 @@ const Navigation = () => {
             >
               <Book className="h-5 w-5" />
               Book
+            </button>
+            <button 
+              onClick={handleFAQClick}
+              className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+            >
+              <HelpCircle className="h-5 w-5" />
+              FAQ
             </button>
           </nav>
         </SheetContent>
