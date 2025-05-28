@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Menu, Book, HelpCircle } from "lucide-react";
+import { Menu, Book, HelpCircle, Mail } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -14,6 +14,11 @@ const Navigation = () => {
 
   const handleFAQClick = () => {
     window.location.href = '/faq';
+    setOpen(false);
+  };
+
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:ThingsGodCantDo@gmail.com?subject=Question about Things G-d Can\'t Do';
     setOpen(false);
   };
 
@@ -41,6 +46,13 @@ const Navigation = () => {
             >
               <HelpCircle className="h-5 w-5" />
               FAQ
+            </button>
+            <button 
+              onClick={handleEmailClick}
+              className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+            >
+              <Mail className="h-5 w-5" />
+              Email Us
             </button>
           </nav>
         </SheetContent>
