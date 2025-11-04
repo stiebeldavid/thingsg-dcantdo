@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Menu, Book, HelpCircle, Mail, FileText } from "lucide-react";
+import { Menu, Book, HelpCircle, Mail, FileText, Home } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -8,6 +8,11 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 const Navigation = () => {
   const [open, setOpen] = useState(false);
   const [newsletterOpen, setNewsletterOpen] = useState(false);
+
+  const handleHomeClick = () => {
+    window.location.href = '/';
+    setOpen(false);
+  };
 
   const handleBookClick = () => {
     window.open('https://www.amazon.com/dp/1300448296?tag=TGCD', '_blank');
@@ -40,6 +45,13 @@ const Navigation = () => {
         </SheetTrigger>
         <SheetContent className="w-[200px] sm:w-[240px]">
           <nav className="flex flex-col gap-4 mt-8">
+            <button 
+              onClick={handleHomeClick}
+              className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+            >
+              <Home className="h-5 w-5" />
+              Home
+            </button>
             <button 
               onClick={handleBookClick}
               className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
