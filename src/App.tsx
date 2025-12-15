@@ -9,7 +9,14 @@ import Shop from "./pages/Shop";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
+import usePageTracking from "./hooks/usePageTracking";
+
 const queryClient = new QueryClient();
+
+const PageTracker = () => {
+  usePageTracking();
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -17,6 +24,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <PageTracker />
         <Navigation />
         <div className="pt-14">
           <Routes>
