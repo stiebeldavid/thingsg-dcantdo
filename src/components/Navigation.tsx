@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { Menu, Book, HelpCircle, Mail, FileText, Home } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const Navigation = () => {
   const [open, setOpen] = useState(false);
@@ -35,54 +34,95 @@ const Navigation = () => {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50">
-      <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30">
-            <Menu className="h-7 w-7" />
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-        </SheetTrigger>
-        <SheetContent className="w-[200px] sm:w-[240px]">
-          <nav className="flex flex-col gap-4 mt-8">
-            <button 
-              onClick={handleHomeClick}
-              className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
-            >
-              <Home className="h-5 w-5" />
-              Home
-            </button>
-            <button 
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black py-3 px-4 md:px-6">
+        <div className="flex items-center justify-between">
+          {/* Logo/Home link */}
+          <a href="/" className="text-white font-bold text-lg hover:text-gray-300 transition-colors">
+            ThingsGodCantDo.com
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
+            <Button 
               onClick={handleBookClick}
-              className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+              className="bg-white text-black hover:bg-gray-200 font-bold px-6"
             >
-              <Book className="h-5 w-5" />
-              Book
-            </button>
-            <button 
-              onClick={handleFAQClick}
-              className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+              Buy the Book
+            </Button>
+            <a
+              href="/faq"
+              className="text-white hover:text-gray-300 transition-colors"
             >
-              <HelpCircle className="h-5 w-5" />
               FAQ
-            </button>
-            <button 
-              onClick={handleEmailClick}
-              className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+            </a>
+            <a
+              href="mailto:ThingsGodCantDo@gmail.com"
+              className="text-white hover:text-gray-300 transition-colors"
             >
-              <Mail className="h-5 w-5" />
-              Email Us
-            </button>
-            <button 
+              Contact
+            </a>
+            <button
               onClick={handleNewsletterClick}
-              className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+              className="text-white hover:text-gray-300 transition-colors"
             >
-              <FileText className="h-5 w-5" />
               Newsletter
             </button>
           </nav>
-        </SheetContent>
-      </Sheet>
+
+          {/* Mobile Navigation */}
+          <div className="flex md:hidden items-center gap-3">
+            <Button 
+              onClick={handleBookClick}
+              size="sm"
+              className="bg-white text-black hover:bg-gray-200 font-bold"
+            >
+              Buy the Book
+            </Button>
+            
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent className="w-[200px] sm:w-[240px]">
+                <nav className="flex flex-col gap-4 mt-8">
+                  <button 
+                    onClick={handleHomeClick}
+                    className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+                  >
+                    <Home className="h-5 w-5" />
+                    Home
+                  </button>
+                  <button 
+                    onClick={handleFAQClick}
+                    className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+                  >
+                    <HelpCircle className="h-5 w-5" />
+                    FAQ
+                  </button>
+                  <button 
+                    onClick={handleEmailClick}
+                    className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+                  >
+                    <Mail className="h-5 w-5" />
+                    Contact
+                  </button>
+                  <button 
+                    onClick={handleNewsletterClick}
+                    className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left"
+                  >
+                    <FileText className="h-5 w-5" />
+                    Newsletter
+                  </button>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </header>
 
       <Dialog open={newsletterOpen} onOpenChange={setNewsletterOpen}>
         <DialogContent className="sm:max-w-[500px]">
@@ -107,7 +147,7 @@ const Navigation = () => {
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+    </>
   );
 };
 
