@@ -44,6 +44,9 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
+            <span className="text-white/80 text-sm italic mr-2">
+              ✨ Featured on Amazon Bestseller Page
+            </span>
             <Button 
               onClick={handleBookClick}
               className="bg-white text-black hover:bg-gray-200 font-bold px-6"
@@ -118,6 +121,9 @@ const Navigation = () => {
 
       {/* Mobile Fixed Footer - Buy the Book */}
       <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-black md:hidden">
+        <p className="text-white/80 text-sm italic text-center mb-2">
+          ✨ Featured on Amazon Bestseller Page ✨
+        </p>
         <Button 
           onClick={handleBookClick}
           className="w-full bg-white text-black hover:bg-gray-200 font-bold py-6 text-lg"
