@@ -38,8 +38,9 @@ const Navigation = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-black py-3 px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo/Home link */}
-          <a href="/" className="text-white font-bold text-xl md:text-2xl hover:text-gray-300 transition-colors">
-            Things G-d Can't Do
+          <a href="/" className="hover:text-gray-300 transition-colors">
+            <span className="text-white font-bold text-xl md:text-2xl block">Things G-d Can't Do</span>
+            <span className="text-white/70 text-xs md:text-sm italic">Hint: He can do anything</span>
           </a>
 
           {/* Desktop Navigation */}
