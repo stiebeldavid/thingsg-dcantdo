@@ -71,15 +71,7 @@ const Navigation = () => {
           </nav>
 
           {/* Mobile Navigation */}
-          <div className="flex md:hidden items-center gap-3">
-            <Button 
-              onClick={handleBookClick}
-              size="sm"
-              className="bg-white text-black hover:bg-gray-200 font-bold"
-            >
-              Buy the Book
-            </Button>
-            
+          <div className="flex md:hidden items-center">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
@@ -123,6 +115,16 @@ const Navigation = () => {
           </div>
         </div>
       </header>
+
+      {/* Mobile Fixed Footer - Buy the Book */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-black md:hidden">
+        <Button 
+          onClick={handleBookClick}
+          className="w-full bg-white text-black hover:bg-gray-200 font-bold py-6 text-lg"
+        >
+          Buy the Book
+        </Button>
+      </div>
 
       <Dialog open={newsletterOpen} onOpenChange={setNewsletterOpen}>
         <DialogContent className="sm:max-w-[500px]">
