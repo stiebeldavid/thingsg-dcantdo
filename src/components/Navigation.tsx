@@ -39,7 +39,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo/Home link */}
           <a href="/" className="text-white font-bold text-lg hover:text-gray-300 transition-colors">
-            ThingsGodCantDo.com
+            Things G-d Can't Do
           </a>
 
           {/* Desktop Navigation */}
