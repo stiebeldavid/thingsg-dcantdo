@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Book, HelpCircle, Mail, FileText, Home } from "lucide-react";
+import { Menu, Book, HelpCircle, Mail, FileText, Home, ShoppingBag } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -43,6 +43,9 @@ const Navigation = () => {
             <Button onClick={handleBookClick} className="bg-white text-black hover:bg-gray-200 font-bold px-6">
               Buy the Book
             </Button>
+            <a href="/store" className="text-white hover:text-gray-300 transition-colors">
+              Store
+            </a>
             <a href="/faq" className="text-white hover:text-gray-300 transition-colors">
               FAQ
             </a>
@@ -69,6 +72,10 @@ const Navigation = () => {
                     <Home className="h-5 w-5" />
                     Home
                   </button>
+                  <a href="/store" onClick={() => setOpen(false)} className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent">
+                    <ShoppingBag className="h-5 w-5" />
+                    Store
+                  </a>
                   <button onClick={handleFAQClick} className="flex items-center gap-2 px-3 py-2 text-lg font-medium transition-colors rounded-md hover:bg-accent text-left">
                     <HelpCircle className="h-5 w-5" />
                     FAQ
