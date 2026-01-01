@@ -83,7 +83,15 @@ const ProductDetail = () => {
     loadProduct();
   }, [handle]);
 
+  const isBook = product?.handle === "things-g-d-cant-do";
+  const amazonUrl = "https://www.amazon.com/dp/1300448296?tag=TGCD";
+
   const handleAddToCart = () => {
+    if (isBook) {
+      window.open(amazonUrl, '_blank');
+      return;
+    }
+
     if (!product || !selectedVariant) return;
 
     const cartItem: CartItem = {
@@ -252,10 +260,10 @@ const ProductDetail = () => {
               onClick={handleAddToCart}
               size="lg"
               className="w-full bg-black text-white hover:bg-gray-800"
-              disabled={!selectedVariant?.availableForSale}
+              disabled={!isBook && !selectedVariant?.availableForSale}
             >
               <ShoppingCart className="h-5 w-5 mr-2" />
-              {selectedVariant?.availableForSale ? 'Add to Cart' : 'Out of Stock'}
+              {isBook ? 'Buy on Amazon' : (selectedVariant?.availableForSale ? 'Add to Cart' : 'Out of Stock')}
             </Button>
           </div>
         </div>
