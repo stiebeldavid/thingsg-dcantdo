@@ -16,9 +16,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const firstVariant = node.variants.edges[0]?.node;
   const firstImage = node.images.edges[0]?.node;
   const price = node.priceRange.minVariantPrice;
-
+  
   const isBook = node.handle === "things-g-d-cant-do";
   const amazonUrl = "https://www.amazon.com/dp/1300448296?tag=TGCD";
+  
+  // Fallback image for the book product
+  const bookFallbackImage = "/lovable-uploads/book-cover.png";
+  const displayImage = isBook && !firstImage ? bookFallbackImage : firstImage?.url;
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -50,10 +54,10 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     <Link to={`/store/product/${node.handle}`} className="group block">
       <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
         <div className="aspect-square bg-gray-100 overflow-hidden">
-          {firstImage ? (
+          {displayImage ? (
             <img
-              src={firstImage.url}
-              alt={firstImage.altText || node.title}
+              src={displayImage}
+              alt={firstImage?.altText || node.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           ) : (

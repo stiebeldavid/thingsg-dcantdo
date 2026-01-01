@@ -58,6 +58,8 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const addItem = useCartStore(state => state.addItem);
 
+  const bookFallbackImage = "/lovable-uploads/book-cover.png";
+
   useEffect(() => {
     const loadProduct = async () => {
       if (!handle) return;
@@ -71,6 +73,9 @@ const ProductDetail = () => {
           }
           if (data.images.edges.length > 0) {
             setSelectedImage(data.images.edges[0].node.url);
+          } else if (data.handle === "things-g-d-cant-do") {
+            // Use fallback image for the book
+            setSelectedImage(bookFallbackImage);
           }
         }
       } catch (err) {
