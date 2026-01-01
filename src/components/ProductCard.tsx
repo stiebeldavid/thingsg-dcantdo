@@ -52,42 +52,42 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <Link to={`/store/product/${node.handle}`} className="group block">
-      <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-        <div className="aspect-square bg-gray-100 overflow-hidden">
+      <article className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+        <div className="aspect-square bg-muted overflow-hidden">
           {displayImage ? (
             <img
               src={displayImage}
               alt={firstImage?.altText || node.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-gray-400">
+            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
               No image
             </div>
           )}
         </div>
         
-        <div className="p-4">
-          <h3 className="font-semibold text-lg mb-1 truncate text-gray-900">{node.title}</h3>
-          <p className="text-gray-600 text-sm mb-3 line-clamp-2">{node.description || 'No description'}</p>
+        <div className="p-4 md:p-5">
+          <h3 className="font-semibold text-lg mb-1 truncate text-foreground">{node.title}</h3>
+          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{node.description || 'No description'}</p>
           
-          <div className="flex items-center justify-between">
-            <span className="text-xl font-bold text-gray-900">
+          <div className="flex items-center justify-between gap-3">
+            <span className="text-xl font-bold text-foreground">
               ${parseFloat(price.amount).toFixed(2)}
             </span>
             
             <Button 
               onClick={handleAddToCart}
               size="sm"
-              className="bg-black text-white hover:bg-gray-800"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
               disabled={!isBook && !firstVariant?.availableForSale}
             >
-              <ShoppingCart className="h-4 w-4 mr-1" />
+              <ShoppingCart className="h-4 w-4 mr-1.5" />
               {isBook ? "Buy on Amazon" : "Add to Cart"}
             </Button>
           </div>
         </div>
-      </div>
+      </article>
     </Link>
   );
 };
