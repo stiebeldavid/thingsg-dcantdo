@@ -15,7 +15,15 @@ const Shop = () => {
     const loadProducts = async () => {
       try {
         const data = await fetchProducts(20);
-        setProducts(data);
+        // Sort: book first, puzzle last
+        const sorted = [...data].sort((a, b) => {
+          if (a.node.handle === "things-g-d-cant-do") return -1;
+          if (b.node.handle === "things-g-d-cant-do") return 1;
+          if (a.node.handle.includes("puzzle")) return 1;
+          if (b.node.handle.includes("puzzle")) return -1;
+          return 0;
+        });
+        setProducts(sorted);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load products');
       } finally {
