@@ -17,9 +17,17 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const firstImage = node.images.edges[0]?.node;
   const price = node.priceRange.minVariantPrice;
 
+  const isBook = node.handle === "things-g-d-cant-do";
+  const amazonUrl = "https://www.amazon.com/dp/1300448296?tag=TGCD";
+
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    
+    if (isBook) {
+      window.open(amazonUrl, '_blank');
+      return;
+    }
     
     if (!firstVariant) return;
 
@@ -68,10 +76,10 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               onClick={handleAddToCart}
               size="sm"
               className="bg-black text-white hover:bg-gray-800"
-              disabled={!firstVariant?.availableForSale}
+              disabled={!isBook && !firstVariant?.availableForSale}
             >
               <ShoppingCart className="h-4 w-4 mr-1" />
-              Add to Cart
+              {isBook ? "Buy on Amazon" : "Add to Cart"}
             </Button>
           </div>
         </div>
