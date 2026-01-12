@@ -95,15 +95,13 @@ const Navigation = () => {
         </div>
       </header>
 
-      {/* Mobile Fixed Footer - Buy the Book */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-black md:hidden">
-        <p className="text-white/80 text-sm italic text-center mb-2">
-          ✨ Featured on Amazon Bestseller Page ✨
-        </p>
-        <Button onClick={handleBookClick} className="w-full bg-white text-black hover:bg-gray-200 font-bold py-6 text-lg">
-          Buy the Book
-        </Button>
-      </div>
+      {/* Mobile Fixed Footer - Small floating pill */}
+      <button 
+        onClick={handleBookClick} 
+        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden px-4 py-2 bg-black/80 backdrop-blur-sm text-white text-sm rounded-full hover:bg-black transition-colors shadow-lg"
+      >
+        Get the Book →
+      </button>
 
       <Dialog open={newsletterOpen} onOpenChange={setNewsletterOpen}>
         <DialogContent className="sm:max-w-[500px]">
