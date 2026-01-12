@@ -31,32 +31,23 @@ const Navigation = () => {
     setOpen(false);
   };
   return <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black py-3 px-4 md:px-6">
+      <header className="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo/Home link */}
-          <a href="/" className="hover:text-gray-300 transition-colors">
-            <span className="text-white font-bold text-xl md:text-2xl block">Things G-d Can't Do</span>
-            <span className="text-white/70 text-xs md:text-sm italic">Hint: He can do anything!</span>
+          <a href="/" className="hover:opacity-70 transition-opacity">
+            <span className="text-black font-bold text-xl md:text-2xl block">Things G-d Can't Do</span>
+            <span className="text-black/50 text-xs md:text-sm italic">Hint: He can do anything!</span>
           </a>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - minimal */}
           <nav className="hidden md:flex items-center gap-6">
-            <span className="text-white/80 text-sm italic mr-2">
-              ✨ Featured on Amazon Bestseller Page
-            </span>
-            <Button onClick={handleBookClick} className="bg-white text-black hover:bg-gray-200 font-bold px-6">
-              Buy the Book
-            </Button>
-            <a href="/store" className="text-white hover:text-gray-300 transition-colors">
+            <a href="/store" className="text-black/70 hover:text-black transition-colors text-sm">
               Store
             </a>
-            <a href="/faq" className="text-white hover:text-gray-300 transition-colors">
+            <a href="/faq" className="text-black/70 hover:text-black transition-colors text-sm">
               FAQ
             </a>
-            <a href="mailto:ThingsGodCantDo@gmail.com" className="text-white hover:text-gray-300 transition-colors">
-              Contact
-            </a>
-            <button onClick={handleNewsletterClick} className="text-white hover:text-gray-300 transition-colors">
+            <button onClick={handleNewsletterClick} className="text-black/70 hover:text-black transition-colors text-sm">
               Newsletter
             </button>
           </nav>
@@ -65,7 +56,7 @@ const Navigation = () => {
           <div className="flex md:hidden items-center">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+                <Button variant="ghost" size="icon" className="text-black hover:bg-black/10">
                   <Menu className="h-6 w-6" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
