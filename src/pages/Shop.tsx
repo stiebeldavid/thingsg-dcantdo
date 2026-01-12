@@ -15,12 +15,14 @@ const Shop = () => {
     const loadProducts = async () => {
       try {
         const data = await fetchProducts(20);
-        // Sort: book first, puzzle last
-        const sorted = [...data].sort((a, b) => {
+        // Only show book and mug, book first
+        const filtered = data.filter((p) => 
+          p.node.handle === "things-g-d-cant-do" || 
+          p.node.handle.includes("mug")
+        );
+        const sorted = [...filtered].sort((a, b) => {
           if (a.node.handle === "things-g-d-cant-do") return -1;
           if (b.node.handle === "things-g-d-cant-do") return 1;
-          if (a.node.handle.includes("puzzle")) return 1;
-          if (b.node.handle.includes("puzzle")) return -1;
           return 0;
         });
         setProducts(sorted);
