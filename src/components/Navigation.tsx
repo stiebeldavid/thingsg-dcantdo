@@ -4,6 +4,7 @@ import { Menu, Book, HelpCircle, Mail, FileText, Home, ShoppingBag } from "lucid
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { CartDrawer } from "@/components/CartDrawer";
 const Navigation = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
@@ -53,7 +54,8 @@ const Navigation = () => {
           </nav>
 
           {/* Mobile Navigation */}
-          <div className="flex md:hidden items-center">
+          <div className="flex md:hidden items-center gap-2">
+            {isStorePage && <CartDrawer />}
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-black hover:bg-black/10">

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { SEOHead } from "@/components/SEOHead";
-import { CartDrawer } from "@/components/CartDrawer";
 
 const AMAZON_BOOK_URL = "https://www.amazon.com/dp/B0DRDQ2TMW";
 
@@ -15,10 +14,6 @@ const Store = () => {
       />
       
       <div className="min-h-[100dvh] bg-background flex flex-col">
-        {/* Minimal header with cart */}
-        <header className="absolute top-4 right-4 z-10">
-          <CartDrawer />
-        </header>
 
         {/* Centered content - no scroll needed */}
         <main className="flex-1 flex flex-col items-center justify-center px-6 py-12">
