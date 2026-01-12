@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Menu, Book, HelpCircle, Mail, FileText, Home, ShoppingBag } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 const Navigation = () => {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const [newsletterOpen, setNewsletterOpen] = useState(false);
+  
+  const isStorePage = location.pathname === '/store' || location.pathname === '/shop' || location.pathname.startsWith('/store/');
   const handleHomeClick = () => {
     window.location.href = '/';
     setOpen(false);
@@ -95,13 +99,15 @@ const Navigation = () => {
         </div>
       </header>
 
-      {/* Mobile Fixed Footer - Small floating pill */}
-      <button 
-        onClick={handleBookClick} 
-        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden px-4 py-2 bg-black/80 backdrop-blur-sm text-white text-sm rounded-full hover:bg-black transition-colors shadow-lg"
-      >
-        Get the Book →
-      </button>
+      {/* Mobile Fixed Footer - Small floating pill (hidden on store/shop pages) */}
+      {!isStorePage && (
+        <button 
+          onClick={handleBookClick} 
+          className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden px-4 py-2 bg-black/80 backdrop-blur-sm text-white text-sm rounded-full hover:bg-black transition-colors shadow-lg"
+        >
+          Get the Book →
+        </button>
+      )}
 
       <Dialog open={newsletterOpen} onOpenChange={setNewsletterOpen}>
         <DialogContent className="sm:max-w-[500px]">
