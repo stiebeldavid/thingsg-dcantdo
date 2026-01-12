@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { useCartStore, CartItem } from "@/stores/cartStore";
-import { CartDrawer } from "@/components/CartDrawer";
 import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Loader2, ShoppingCart, Minus, Plus } from "lucide-react";
@@ -144,22 +143,16 @@ const ProductDetail = () => {
         url={`https://thingsgodcantdo.com/store/product/${product.handle}`}
       />
       
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <div className="bg-primary text-primary-foreground py-4 px-4">
-          <div className="max-w-6xl mx-auto flex items-center justify-between">
-            <Link 
-              to="/store" 
-              className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-            >
-              <ArrowLeft className="h-5 w-5" />
-              Back to Store
-            </Link>
-            <CartDrawer />
-          </div>
-        </div>
-
+      <div className="min-h-screen bg-background pt-20">
         <main className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+          {/* Back link */}
+          <Link 
+            to="/store" 
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Store
+          </Link>
           <article className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Images */}
             <div className="space-y-4">
