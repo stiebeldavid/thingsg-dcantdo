@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { SEOHead } from "@/components/SEOHead";
 
-const AMAZON_BOOK_URL = "https://www.amazon.com/dp/B0DRDQ2TMW";
+const AMAZON_BOOK_URL = "https://www.amazon.com/dp/1300448296?tag=TGCD";
 
 const Shop = () => {
   return (
