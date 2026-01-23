@@ -51,6 +51,14 @@ const Navigation = () => {
             <button onClick={handleNewsletterClick} className="text-black/70 hover:text-black transition-colors text-sm">
               Newsletter
             </button>
+            <a 
+              href="https://www.amazon.com/dp/1300448296?tag=TGCD" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-4 py-1.5 bg-black text-white text-sm font-medium rounded-full hover:bg-black/80 transition-colors"
+            >
+              Get the Book
+            </a>
           </nav>
 
           {/* Mobile Navigation */}
