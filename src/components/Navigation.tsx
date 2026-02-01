@@ -48,9 +48,9 @@ const Navigation = () => {
             <a href="/faq" className="text-black/70 hover:text-black transition-colors text-sm">
               FAQ
             </a>
-            <button onClick={handleNewsletterClick} className="text-black/70 hover:text-black transition-colors text-sm">
-              Newsletter
-            </button>
+            <a href="mailto:ThingsGodCantDo@gmail.com?subject=Question about Things G-d Can't Do" className="text-black/70 hover:text-black transition-colors text-sm">
+              Contact
+            </a>
             <a 
               href="https://www.amazon.com/dp/1300448296?tag=TGCD" 
               target="_blank" 
