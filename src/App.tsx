@@ -9,6 +9,7 @@ import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 import Store from "./pages/Store";
 import ProductDetail from "./pages/ProductDetail";
+import Book from "./pages/Book";
 import Navigation from "./components/Navigation";
 import usePageTracking from "./hooks/usePageTracking";
 
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/shop" element={<Shop />} />
             <Route path="/store" element={<Store />} />
             <Route path="/store/product/:handle" element={<ProductDetail />} />
+            <Route path="/book" element={<Book />} />
             <Route path="/faq" element={<FAQ />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
