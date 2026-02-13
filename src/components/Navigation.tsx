@@ -11,6 +11,7 @@ const Navigation = () => {
   const [newsletterOpen, setNewsletterOpen] = useState(false);
   
   const isStorePage = location.pathname === '/store' || location.pathname === '/shop' || location.pathname.startsWith('/store/');
+  const isBookPage = location.pathname === '/book';
   const handleHomeClick = () => {
     window.location.href = '/';
     setOpen(false);
@@ -96,7 +97,7 @@ const Navigation = () => {
       </header>
 
       {/* Mobile Fixed Footer - Small floating pill (hidden on store/shop pages) */}
-      {!isStorePage && (
+      {!isStorePage && !isBookPage && (
         <button 
           onClick={handleBookClick} 
           className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden px-4 py-2 bg-black/80 backdrop-blur-sm text-white text-sm rounded-full hover:bg-black transition-colors shadow-lg"
