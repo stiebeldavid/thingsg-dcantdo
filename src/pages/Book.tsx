@@ -15,7 +15,7 @@ const editions: BookEdition[] = [
   { title: "Original Edition", url: "https://www.amazon.com/dp/1300448296" },
   { title: "Jewish Edition", subtitle: "With Rabbinical Endorsements", url: "https://feldheim.com/things-g-d-can-t-do" },
   { title: "Spanish Edition", comingSoon: true, coverImage: "/lovable-uploads/book-cover-spanish.png" },
-  { title: "Hebrew Edition", comingSoon: true },
+  { title: "Hebrew Edition", comingSoon: true, coverImage: "/lovable-uploads/book-cover-hebrew.png" },
   { title: "Russian Edition", comingSoon: true },
   { title: "Mandarin Edition", comingSoon: true },
   { title: "French Edition", comingSoon: true },
