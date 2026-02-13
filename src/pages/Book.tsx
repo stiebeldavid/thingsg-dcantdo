@@ -39,18 +39,19 @@ const Book = () => {
         <h1 className="text-3xl font-bold text-center text-foreground mb-2">Things G-d Can't Do</h1>
         <p className="text-center text-muted-foreground mb-10">Available in multiple editions</p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
           {editions.map((edition) => (
             <div key={edition.title} className="flex flex-col items-center text-center gap-3">
-              <div className="relative w-36 h-52 bg-muted rounded-md overflow-hidden shadow-sm flex items-center justify-center">
+              <div className="relative w-44 h-64 sm:w-48 sm:h-72 bg-muted rounded-md overflow-hidden shadow-sm flex items-center justify-center">
                 <img
                   src={edition.coverImage || "/lovable-uploads/book-cover.png"}
                   alt={edition.title}
                   className="w-full h-full object-cover"
+                  loading="eager"
                 />
                 {edition.comingSoon && (
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <span className="bg-white text-foreground text-[10px] font-semibold px-2 py-0.5 rounded-full">Coming Soon</span>
+                    <span className="bg-white text-foreground text-xs font-semibold px-3 py-1 rounded-full">Coming Soon</span>
                   </div>
                 )}
               </div>
