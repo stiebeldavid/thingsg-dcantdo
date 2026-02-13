@@ -42,7 +42,7 @@ const Book = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
           {editions.map((edition) => (
             <div key={edition.title} className="flex flex-col items-center text-center gap-3">
-              <div className="relative w-28 h-40 bg-muted rounded-md overflow-hidden shadow-sm flex items-center justify-center">
+              <div className="relative w-36 h-52 bg-muted rounded-md overflow-hidden shadow-sm flex items-center justify-center">
                 <img
                   src={edition.coverImage || "/lovable-uploads/book-cover.png"}
                   alt={edition.title}
