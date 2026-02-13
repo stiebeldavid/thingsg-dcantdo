@@ -41,12 +41,17 @@ const Book = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
           {editions.map((edition) => (
             <div key={edition.title} className="flex flex-col items-center text-center gap-3">
-              <div className="w-28 h-40 bg-muted rounded-md overflow-hidden shadow-sm flex items-center justify-center">
+              <div className="relative w-28 h-40 bg-muted rounded-md overflow-hidden shadow-sm flex items-center justify-center">
                 <img
                   src="/lovable-uploads/book-cover.png"
                   alt={edition.title}
                   className="w-full h-full object-cover"
                 />
+                {edition.comingSoon && (
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <span className="bg-white text-foreground text-[10px] font-semibold px-2 py-0.5 rounded-full">Coming Soon</span>
+                  </div>
+                )}
               </div>
               <div>
                 <p className="font-medium text-sm text-foreground">{edition.title}</p>
