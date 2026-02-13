@@ -28,19 +28,17 @@ const Shop = () => {
           {/* Two fun options */}
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
             {/* Book option */}
-            <a
-              href={AMAZON_BOOK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/book"
               className="group relative w-64 h-32 sm:w-72 sm:h-36 rounded-2xl border-2 border-foreground/10 hover:border-foreground/30 bg-card hover:bg-muted/50 transition-all duration-300 flex flex-col items-center justify-center gap-2"
             >
               <span className="text-2xl sm:text-3xl font-bold text-foreground group-hover:scale-105 transition-transform">
                 Buy the Book
               </span>
               <span className="text-sm text-muted-foreground">
-                → Amazon
+                → Editions
               </span>
-            </a>
+            </Link>
 
             {/* Divider */}
             <span className="text-muted-foreground/40 text-lg font-light">
