@@ -6,6 +6,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Loader2, ShoppingCart, Minus, Plus } from "lucide-react";
 import { toast } from "sonner";
+import { useQuery } from "@tanstack/react-query";
 
 interface ProductNode {
   id: string;
@@ -51,8 +52,6 @@ interface ProductNode {
 
 const ProductDetail = () => {
   const { handle } = useParams<{ handle: string }>();
-  const [product, setProduct] = useState<ProductNode | null>(null);
-  const [loading, setLoading] = useState(true);
   const [selectedVariant, setSelectedVariant] = useState<ProductNode['variants']['edges'][0]['node'] | null>(null);
   const [selectedImage, setSelectedImage] = useState<string>('');
   const [quantity, setQuantity] = useState(1);
@@ -60,32 +59,24 @@ const ProductDetail = () => {
 
   const bookFallbackImage = "/lovable-uploads/book-cover.png";
 
-  useEffect(() => {
-    const loadProduct = async () => {
-      if (!handle) return;
-      
-      try {
-        const data = await fetchProductByHandle(handle);
-        if (data) {
-          setProduct(data);
-          if (data.variants.edges.length > 0) {
-            setSelectedVariant(data.variants.edges[0].node);
-          }
-          if (data.images.edges.length > 0) {
-            setSelectedImage(data.images.edges[0].node.url);
-          } else if (data.handle === "things-g-d-cant-do") {
-            setSelectedImage(bookFallbackImage);
-          }
-        }
-      } catch (err) {
-        console.error('Failed to load product:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const { data: product = null, isLoading: loading } = useQuery({
+    queryKey: ['product', handle],
+    queryFn: () => fetchProductByHandle(handle!),
+    enabled: !!handle,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
 
-    loadProduct();
-  }, [handle]);
+  useEffect(() => {
+    if (!product) return;
+    if (product.variants.edges.length > 0 && !selectedVariant) {
+      setSelectedVariant(product.variants.edges[0].node);
+    }
+    if (product.images.edges.length > 0 && !selectedImage) {
+      setSelectedImage(product.images.edges[0].node.url);
+    } else if (product.handle === "things-g-d-cant-do" && !selectedImage) {
+      setSelectedImage(bookFallbackImage);
+    }
+  }, [product]);
 
   const isBook = product?.handle === "things-g-d-cant-do";
   const amazonUrl = "https://www.amazon.com/dp/1300448296?tag=TGCD";
