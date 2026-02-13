@@ -1,33 +1,21 @@
 
 
-# Speed Up Page Loading
+# Fix Grainy Book Thumbnails
 
-Your site is relatively simple, but there are two impactful optimizations we can make:
+## Problem
 
-## 1. Lazy-load pages (code splitting)
+The thumbnail container is set to `w-28 h-40` (112x160 CSS pixels). On Retina/high-DPI screens (2x-3x), the browser needs 224-336px wide images to render sharply. The small container combined with `object-cover` cropping causes the images to appear grainy and blurry.
 
-Right now, all page components (Store, Shop, FAQ, Book, ProductDetail, etc.) are imported upfront in `App.tsx`, meaning the browser downloads ALL page code before showing anything -- even if the user only visits the homepage.
+## Solution
 
-We'll use React's `lazy()` and `Suspense` to split each page into its own chunk that only loads when the user navigates to it. This makes the initial page load significantly faster.
-
-## 2. Preload product data with React Query
-
-The ProductDetail page currently fetches product data inside a `useEffect`, showing a spinner until it finishes. We'll switch to `useQuery` from TanStack React Query (already installed) with `staleTime` caching, so revisiting the same product is instant and the data layer is more robust.
-
----
+Increase the thumbnail display size so the existing higher-resolution source images have more room to render clearly, and the visual quality improves across all screen densities.
 
 ## Technical Details
 
-### App.tsx changes
-- Replace direct imports of page components with `React.lazy()` calls
-- Wrap `<Routes>` in a `<Suspense>` with a lightweight loading spinner fallback
+### Changes to `src/pages/Book.tsx`
 
-### ProductDetail.tsx changes
-- Replace the manual `useEffect` + `useState` data fetching with `useQuery` from `@tanstack/react-query`
-- This gives automatic caching, so navigating back to a previously viewed product loads instantly
+- Increase the thumbnail container from `w-28 h-40` to `w-36 h-52` (144x208 CSS pixels) -- this gives the browser more pixels to work with and better matches the source image resolution
+- Optionally adjust the grid gap/columns if needed to accommodate the slightly larger thumbnails
 
-### Expected Impact
-- **Initial load**: Smaller JS bundle since pages are split into separate chunks
-- **Navigation**: Pages like `/book` and `/faq` (which have zero API calls) will feel nearly instant
-- **Product pages**: Cached after first visit, no re-fetch on back navigation
+This is a one-line CSS class change that will make the covers noticeably sharper, especially on mobile Retina screens.
 
