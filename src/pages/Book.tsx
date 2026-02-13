@@ -8,12 +8,13 @@ interface BookEdition {
   subtitle?: string;
   url?: string;
   comingSoon?: boolean;
+  coverImage?: string;
 }
 
 const editions: BookEdition[] = [
   { title: "Original Edition", url: "https://www.amazon.com/dp/1300448296" },
   { title: "Jewish Edition", subtitle: "With Rabbinical Endorsements", url: "https://feldheim.com/things-g-d-can-t-do" },
-  { title: "Spanish Edition", comingSoon: true },
+  { title: "Spanish Edition", comingSoon: true, coverImage: "/lovable-uploads/book-cover-spanish.png" },
   { title: "Hebrew Edition", comingSoon: true },
   { title: "Russian Edition", comingSoon: true },
   { title: "Mandarin Edition", comingSoon: true },
@@ -43,7 +44,7 @@ const Book = () => {
             <div key={edition.title} className="flex flex-col items-center text-center gap-3">
               <div className="relative w-28 h-40 bg-muted rounded-md overflow-hidden shadow-sm flex items-center justify-center">
                 <img
-                  src="/lovable-uploads/book-cover.png"
+                  src={edition.coverImage || "/lovable-uploads/book-cover.png"}
                   alt={edition.title}
                   className="w-full h-full object-cover"
                 />
